@@ -2,8 +2,10 @@
 name = "trovochat"
 version = "0.0.1"
 authors = ["museun <museun@aleph0cap.com>"]
+repository = "https://github.com/museun/trovochat"
 edition = "2018"
 description = "interface to the irc-side of trovo's chat system"
+keywords = [ "trovo", "irc" ]
 license = "0BSD"
 
 [dependencies]
