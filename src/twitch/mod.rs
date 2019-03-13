@@ -2,7 +2,7 @@ mod badge;
 mod color;
 mod emotes;
 
-pub use self::badge::Badge;
+pub use self::badge::{Badge, BadgeKind};
 pub use self::color::{trovo_colors, Trovo as Color, RGB};
 pub use self::emotes::Emotes;
 
