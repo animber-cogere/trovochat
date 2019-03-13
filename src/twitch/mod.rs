@@ -18,6 +18,9 @@ pub use self::error::Error;
 mod client;
 pub use self::client::Client;
 
+/// Trovo channel types
+pub mod channel;
+
 /// Information gathered during the `GLOBALUSERSTATE` event
 #[derive(Debug, Clone)]
 pub struct LocalUser {
