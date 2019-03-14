@@ -58,7 +58,7 @@
 //! ```no_run
 //! use std::net::TcpStream;
 //! use trovochat::trovo::{commands::PrivMsg, Capability, Client};
-//! use trovochat::UserConfig;
+//! use trovochat::{TROVO_IRC_ADDRESS, UserConfig};
 //! # fn main() {
 //! // create a simple TcpStream
 //! let read = TcpStream::connect(TROVO_IRC_ADDRESS).expect("to connect");
