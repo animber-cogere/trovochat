@@ -17,7 +17,8 @@ type InspectFn = Box<dyn Fn(String) + 'static + Send + Sync>;
 /// [Write](https://doc.rust-lang.org/std/io/trait.Write.html) pair
 ///
 /// ```no_run
-/// let stream = trovochat::TestStream::new();
+/// # use {trovochat::TestStream, trovochat::trovo::Client};
+/// let stream = TestStream::new();
 /// let (r,w) = (stream.clone(), stream.clone());
 /// let mut client = Client::new(r,w); // moves the r,w
 /// // register, join, on, etc
