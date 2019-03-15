@@ -154,7 +154,7 @@ impl From<&str> for Trovo {
             "SeaGreen" | "sea_green" | "seagreen" | "sea green" => SeaGreen,
             "SpringGreen" | "spring_green" | "springgreen" | "spring green" => SpringGreen,
             "YellowGreen" | "yellow_green" | "yellowgreen" | "yellow green" => YellowGreen,
-            s => Trovo::Turbo(RGB::from_hex(s)),
+            s => Turbo(RGB::from_hex(s)),
         }
     }
 }
