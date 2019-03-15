@@ -71,7 +71,7 @@ impl RGB {
 }
 
 impl From<Trovo> for RGB {
-    /// Tries to turn the [`Color`](./enum.Color.html) color into an [`RGB`](./struct.RGB.html)
+    /// Tries to turn the [`TrovoColor`](./enum.TrovoColor.html) color into an [`RGB`](./struct.RGB.html)
     ///
     /// If the color is, somehow, unknown, it'll use [`RGB::default`](./struct.RGB.html#method.default)
     fn from(color: Trovo) -> Self {
@@ -197,7 +197,7 @@ impl std::fmt::Display for Trovo {
     }
 }
 
-/// A helper method that returns a const array of [`Trovo`](./enum.Trovo.html) colors to [`RGB`](./struct.RGB.html)
+/// A helper method that returns a const array of [`TrovoColor`](./enum.TrovoColor.html) colors to [`RGB`](./struct.RGB.html)
 pub const fn trovo_colors() -> [(Trovo, RGB); 15] {
     use Trovo::*;
     [

@@ -3,7 +3,7 @@ mod color;
 mod emotes;
 
 pub use self::badge::{Badge, BadgeKind};
-pub use self::color::{trovo_colors, Trovo as Color, RGB};
+pub use self::color::{trovo_colors as colors, Trovo as TrovoColor, RGB};
 pub use self::emotes::Emotes;
 
 /// An assortment of Trovo commands
@@ -19,9 +19,14 @@ mod client;
 pub use self::client::{Client, ClientExt};
 
 /// Trovo channel types
-pub mod channel;
+mod channel;
+pub use self::channel::Channel;
 
-/// Information gathered during the `GLOBALUSERSTATE` event
+#[doc(hidden)]
+pub mod userconfig;
+pub use self::userconfig::UserConfig;
+
+/// Information gathered during the [`GLOBALUSERSTATE`](./commands/struct.GlobalUserState.html) event
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct LocalUser {
@@ -30,14 +35,16 @@ pub struct LocalUser {
     /// Your display name, if set
     pub display_name: Option<String>,
     /// Your color, if set
-    pub color: Option<Color>,
+    pub color: Option<TrovoColor>,
     /// Your badges
     pub badges: Vec<Badge>,
     /// Your list of emote sets
     pub emote_sets: Vec<u64>,
 }
 
-/// Messages created by the client.
+/// Messages created by the [`Client`](./struct.Client.html).
+///
+/// Wraps [`commands`](./commands/index.html)
 #[derive(Debug, PartialEq, Clone)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum Message {
