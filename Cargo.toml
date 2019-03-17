@@ -1,6 +1,6 @@
 [package]
 name = "trovochat"
-version = "0.1.15"
+version = "0.1.16"
 authors = ["museun <museun@aleph0cap.com>"]
 repository = "https://github.com/museun/trovochat"
 edition = "2018"
