@@ -142,10 +142,12 @@ pub use trovo::*;
 
 pub use self::trovo::UserConfig;
 
+mod teereader;
 mod teststream;
 
 /// Helpers for writing tests
 pub mod helpers {
+    pub use super::teereader::TeeReader;
     pub use super::teststream::TestStream;
 }
 
