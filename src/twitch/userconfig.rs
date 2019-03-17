@@ -6,6 +6,7 @@ use hashbrown::HashSet;
 use std::collections::HashSet;
 
 /// Configuration used to complete the 'registration' with the irc server
+#[derive(Clone)]
 pub struct UserConfig {
     /// OAuth token from trovo, it must have the
     /// [scopes](https://dev.trovo.tv/docs/authentication/#scopes):
