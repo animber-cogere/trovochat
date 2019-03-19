@@ -5,8 +5,8 @@ fn main() {
 
     // create a userconfig
     let userconfig = UserConfig::builder()
-        .nick(env!("MY_TROVO_NAME"))
-        .token(env!("MY_TROVO_PASS"))
+        .nick(std::env::var("MY_TROVO_NAME").unwrap())
+        .token(std::env::var("MY_TROVO_PASS").unwrap())
         // enable these capbilities
         .tags()
         .membership()
