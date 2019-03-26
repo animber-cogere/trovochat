@@ -1,7 +1,7 @@
 use std::io::Write;
 use std::sync::Arc;
 
-use super::{Channel, Error, MutexWrapper as Mutex, TrovoColor};
+use super::{Channel, Color, Error, MutexWrapper as Mutex};
 
 /// A thread-safe, clonable writer for the Trovo client
 pub struct Writer<W>(pub(crate) Arc<Mutex<W>>);
@@ -98,11 +98,8 @@ impl<W: Write> Writer<W> {
     }
 
     /// Change your username color.
-    pub fn color<C>(&self, color: C) -> Result<(), Error>
-    where
-        C: Into<TrovoColor>,
-    {
-        self.command(format!("/color {}", color.into()))
+    pub fn color(&self, color: Color) -> Result<(), Error> {
+        self.command(format!("/color {}", color))
     }
 
     /// Reconnects to chat.
