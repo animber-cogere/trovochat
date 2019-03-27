@@ -38,7 +38,7 @@ fn main() {
     let userconfig = UserConfig::builder()
         .nick(env!("MY_TROVO_NAME"))
         .token(env!("MY_TROVO_PASS"))
-        // enable these capbilities
+        // enable these capabilities
         .tags()
         .membership()
         .commands()
