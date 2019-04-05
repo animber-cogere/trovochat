@@ -13,9 +13,10 @@ pub trait WriterExt {
     /// amount of actual writes as possible
     ///
     /// ```no_run
-    /// # use trovochat::{helpers::TestStream, Client};
+    /// # use trovochat::{helpers::TestStream, Client, SyncReadAdapter};
     /// # let mut stream = TestStream::new();
     /// # let (r, w) = (stream.clone(), stream.clone());
+    /// # let r = SyncReadAdapter::new(r);
     /// # let mut client = Client::new(r, w);
     /// use trovochat::WriterExt as _;
     /// let writer = client.writer();
