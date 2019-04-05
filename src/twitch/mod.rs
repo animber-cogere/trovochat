@@ -4,7 +4,7 @@ mod emotes;
 
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-pub use self::badge::{Badge, BadgeKind};
+pub use self::badge::{Badge, BadgeInfo, BadgeKind};
 pub use self::emotes::Emotes;
 
 pub use self::color::{trovo_colors as colors, Color, TrovoColor, RGB};
