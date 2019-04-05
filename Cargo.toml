@@ -10,7 +10,7 @@ keywords = [ "trovo", "irc" ]
 license = "0BSD"
 
 [badges]
-circle-ci = { repository = "https://github.com/museun/trovochat", branch = "master" }
+circle-ci = { repository = "museun/trovochat", branch = "master", service = "github" }
 maintenance = { status = "actively-developed" }
 
 [dependencies]
