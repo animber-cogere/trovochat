@@ -5,10 +5,13 @@
 [![CircleCI](https://circleci.com/gh/museun/trovochat.svg?style=svg)](https://circleci.com/gh/museun/trovochat)
 ![AppVeyor](https://img.shields.io/appveyor/ci/museun/trovochat.svg)
 
-
 interface to the irc portion of trovo's chat
 
-you provide the `std::io::Read` and the `std::io::Write` <br>
+you provide implementations of [`ReadAdapter`](https://docs.rs/trovochat/latest/trovochat/trait.ReadAdapter.html) and [`WriteAdapter`](https://docs.rs/trovochat/latest/trovochat/trait.WriteAdapter.html)
+
+or, wrap an [`std::io::Read`](https://doc.rust-lang.org/std/io/trait.Read.html) and [`std::io::Write`](https://doc.rust-lang.org/std/io/trait.Write.html) with 
+[`ReadAdapter`](https://docs.rs/trovochat/latest/trovochat/struct.SyncReadAdapter.html) and [`WriteAdapter`](https://docs.rs/trovochat/latest/trovochat/struct.SyncWriteAdapter.html)
+
 ...and this provides all of the types for Trovo chat message.
 
 see the [docs](https://docs.rs/trovochat/latest/trovochat) for more info
@@ -20,7 +23,7 @@ a demo of it:
 fn main() {
     use std::net::TcpStream;
     use trovochat::commands::PrivMsg;
-    use trovochat::{Client, Writer, UserConfig};
+    use trovochat::{Client, Writer, UserConfig, sync_adapters};
 
     // create a userconfig
     let userconfig = UserConfig::builder()
@@ -39,15 +42,15 @@ fn main() {
     // clone the tcpstream
     let write = read.try_clone().expect("must be able to clone");
     
-    // create a read adapter
-    let read = SyncReadAdapter::new(read);
+    // create the adapters adapter
+    let (read, write) = sync_adapters(read, write);
 
     // create a new client from the read, write pairs
     let mut client = Client::new(read, write);
 
     // when we receive a PrivMsg run this function
     // tok allows us to remove this later, if we want
-    let _tok = client.on(move |msg: PrivMsg, w: Writer<_>| {
+    let _tok = client.on(move |msg: PrivMsg, w: Writer| {
         const KAPPA: usize = 25;
         // print out `user: message`
         println!("{}: {}", msg.display_name().unwrap(), msg.message());
@@ -69,7 +72,7 @@ fn main() {
     });
 
     // log if the broadcaster, a sub or a mod talks
-    client.on(move |msg: PrivMsg, _: Writer<_>| {
+    client.on(move |msg: PrivMsg, _: Writer| {
         use trovochat::BadgeKind::{Broadcaster, Subscriber};
 
         let name = msg.display_name().unwrap_or_else(|| msg.irc_name());
