@@ -4,7 +4,7 @@ use std::sync::Arc;
 use trovochat::irc::types::Message as IrcMessage;
 use trovochat::{commands::*, Client, Handler, Message, UserConfig, Writer};
 
-fn main() -> Result<(), Box<std::error::Error>> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     // connect to trovo via a tcp stream, creating a read/write pair
     let (read, write) = {
         let stream = TcpStream::connect(trovochat::TROVO_IRC_ADDRESS)?;
