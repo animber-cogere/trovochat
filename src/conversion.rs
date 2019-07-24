@@ -1,5 +1,5 @@
 use crate::irc::types::Message as IrcMessage;
-use hashbrown::HashMap;
+use std::collections::HashMap;
 
 /// Convert an IRC-like message type into something that the Trovo commands can be parsed from
 ///
@@ -10,8 +10,9 @@ use hashbrown::HashMap;
 /// Example:
 /** ```
 use trovochat::conversion::{TagType, ArgsType};
+use std::collections::HashMap;
 struct MyPrivMsg {
-    tags: hashbrown::HashMap<String, String>,
+    tags: HashMap<String, String>,
     sender: String,
     channel: String,
     data: String,
