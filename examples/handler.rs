@@ -1,7 +1,7 @@
 use std::net::TcpStream;
 use std::sync::Arc;
 
-use trovochat::irc::types::Message as IrcMessage;
+use trovochat::irc::Message as IrcMessage;
 use trovochat::{commands::*, Client, Handler, Message, UserConfig, Writer};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
