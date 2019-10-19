@@ -153,7 +153,6 @@ pub use trovo::*;
 
 pub use self::trovo::UserConfig;
 
-// TODO remove this stuff
 /// Message conversion types
 pub mod conversion;
 #[doc(inline)]
