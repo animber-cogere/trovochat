@@ -147,6 +147,8 @@ pub use tags::Tags;
 mod trovo;
 pub use trovo::*;
 
+pub use crate::trovo::filter::Filter;
+
 pub use self::trovo::UserConfig;
 
 /// Message conversion types
