@@ -1,6 +1,11 @@
-[![Build Status](https://circleci.com/gh/museun/trovochat/tree/master.svg?style=shield)](https://circleci.com/gh/museun/trovochat/cargo-readme/tree/master)
-
 # trovochat
+
+# NOTE this crate is undergoing massive changes.
+**Please check out the async branch, or one of the v0.8.0 tags**
+
+
+
+[![Build Status](https://circleci.com/gh/museun/trovochat/tree/master.svg?style=shield)](https://circleci.com/gh/museun/trovochat/cargo-readme/tree/master)
 
 ## trovochat
 This crate provides a way to interact with Trovo's chat
