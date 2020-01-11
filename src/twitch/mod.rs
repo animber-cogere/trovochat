@@ -1,43 +1,19 @@
-mod badge;
-mod color;
-mod emotes;
-
-// this is because a lot of things use super::* to get a HashMap
-use std::collections::HashMap;
-
-pub use badge::{Badge, BadgeInfo, BadgeKind};
-pub use emotes::Emotes;
-
-pub use color::{trovo_colors as colors, Color, TrovoColor, RGB};
-
-/// An assortment of Trovo commands
-pub mod commands;
-
 mod capability;
 pub use capability::Capability;
 
-mod error;
-pub use error::Error;
+mod userconfig;
+pub use userconfig::{UserConfig, UserConfigBuilder, UserConfigError};
 
-mod client;
-pub use client::{Client, Event};
+mod tags;
+pub use tags::Tags;
 
-mod writer;
-pub use writer::Writer;
+mod emotes;
+pub use emotes::Emotes;
 
-/// Trovo channel types
+mod badge;
+pub use badge::{Badge, BadgeInfo, BadgeKind};
+
+pub mod color;
+
 mod channel;
-pub use channel::{Channel, IntoChannel};
-
-#[doc(hidden)]
-pub mod userconfig;
-pub use userconfig::UserConfig;
-pub use userconfig::UserConfigBuilder;
-
-mod local_user;
-pub use local_user::LocalUser;
-
-mod message;
-pub use message::Message;
-
-pub(crate) mod filter;
+pub use channel::{Channel, Error as ChannelError, IntoChannel};
