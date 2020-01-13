@@ -19,6 +19,7 @@ See `examples/demo.rs` for a demo of the api
     unused_import_braces,
     unused_qualifications
 )]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[macro_use]
 mod macros;
@@ -67,8 +68,6 @@ pub const TROVO_WS_ADDRESS: &str = "ws://irc-ws.chat.trovo.tv:80";
 
 /// The Trovo WebSocket address for TLS connections
 pub const TROVO_WS_ADDRESS_TLS: &str = "wss://irc-ws.chat.trovo.tv:443";
-
-const TROVO_DOMAIN: &str = "irc.chat.trovo.tv";
 
 cfg_async! {
     use tokio::io::{AsyncRead, AsyncWrite};
@@ -131,6 +130,8 @@ cfg_async! {
 }
 
 cfg_async! {
+    const TROVO_DOMAIN: &str = "irc.chat.trovo.tv";
+
     type ConnectRes = std::io::Result<(
         BoxAsyncRead, BoxAsyncWrite
     )>;
