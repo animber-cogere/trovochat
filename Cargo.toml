@@ -1,13 +1,13 @@
 [package]
 name          = "trovochat"
 edition       = "2018"
-version       = "0.8.0-beta.4"
+version       = "0.8.0"
 authors       = ["museun <museun@aleph0cap.com>"]
 keywords      = ["trovo", "irc", "async", "asynchronous", "tokio"]
 license       = "MIT OR Apache-2.0"
 readme        = "README.md"
 description   = "interface to the irc-side of trovo's chat system"
-documentation = "https://docs.rs/trovochat/0.8.0-beta.4/trovochat/"
+documentation = "https://docs.rs/trovochat/0.8.0/trovochat/"
 repository    = "https://github.com/museun/trovochat"
 categories    = ["asynchronous", "network-programming", "parser-implementations"]
 
