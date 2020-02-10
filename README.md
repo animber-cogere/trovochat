@@ -64,7 +64,7 @@ use trovochat::{AsOwned as _, Parse as _};
 fn main() {
     let input = "@badge-info=subscriber/8;color=#59517B;tmi-sent-ts=1580932171144;user-type= :tmi.trovo.tv USERNOTICE #justinfan1234\r\n";
 
-    // parse potentionally many messages from the input (flatten just safely unwraps the result)
+    // parse potentially many messages from the input (flatten just safely unwraps the result)
     // msg is a decode::Message<'a> here
     for msg in trovochat::decode(&input).flatten() {
         // parse message into a specific type
