@@ -68,29 +68,31 @@ pub const TROVO_WS_ADDRESS: &str = "ws://irc-ws.chat.trovo.tv:80";
 /// The Trovo WebSocket address for TLS connections
 pub const TROVO_WS_ADDRESS_TLS: &str = "wss://irc-ws.chat.trovo.tv:443";
 
-/// Connection type
-///
-/// Defaults to `Nope`
-#[derive(Debug, Copy, Clone, PartialEq)]
-pub enum Secure {
-    /// Use TLS
-    UseTls,
-    /// Don't use TLS
-    Nope,
-}
-
-impl Default for Secure {
-    fn default() -> Self {
-        Self::Nope
+cfg_async! {
+    /// Connection type
+    ///
+    /// Defaults to `Nope` (no TLS)
+    #[derive(Debug, Copy, Clone, PartialEq)]
+    pub enum Secure {
+        /// Use TLS
+        UseTls,
+        /// Don't use TLS
+        Nope,
     }
-}
 
-impl Secure {
-    /// Gets the requested (IRC) address
-    pub fn get_address(self) -> &'static str {
-        match self {
-            Self::UseTls => TROVO_IRC_ADDRESS_TLS,
-            Self::Nope => TROVO_IRC_ADDRESS,
+    impl Default for Secure {
+        fn default() -> Self {
+            Self::Nope
+        }
+    }
+
+    impl Secure {
+        /// Gets the requested (IRC) address
+        pub fn get_address(self) -> &'static str {
+            match self {
+                Self::UseTls => TROVO_IRC_ADDRESS_TLS,
+                Self::Nope => TROVO_IRC_ADDRESS,
+            }
         }
     }
 }
