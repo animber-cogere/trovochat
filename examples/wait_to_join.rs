@@ -1,6 +1,6 @@
 /* in your Cargo.toml
 [dependencies]
-trovochat = "0.8.3"                             # this crate
+trovochat = "0.8"                               # this crate
 tokio = { version = "0.2", features = ["full"] } # you need tokio to run it
 */
 
