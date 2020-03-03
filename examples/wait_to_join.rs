@@ -14,8 +14,9 @@ async fn main() {
         std::env::var("TROVO_CHANNEL").unwrap(),
     );
 
-    let tls = trovochat::Secure::UseTls;
-    let (read, write) = trovochat::connect_easy(&nick, &pass, tls).await.unwrap();
+    let stream = trovochat::connect_easy_tls(&nick, &pass).await.unwrap();
+    // split the stream
+    let (read, write) = tokio::io::split(stream);
 
     let client = trovochat::Client::new();
     // this runs the client in a background task, giving a future you wait on

@@ -4,7 +4,7 @@ trovochat = "0.8"                               # this crate
 tokio = { version = "0.2", features = ["full"] } # you need tokio to run it
 */
 
-use trovochat::{events, Client, Secure};
+use trovochat::{events, Client};
 
 // so .next() can be used on the EventStream
 // futures::stream::StreamExt will also work
@@ -13,9 +13,9 @@ use tokio::stream::StreamExt as _;
 #[tokio::main]
 async fn main() {
     let (nick, pass) = trovochat::ANONYMOUS_LOGIN;
-    let (read, write) = trovochat::connect_easy(&nick, &pass, Secure::UseTls)
-        .await
-        .unwrap();
+    let stream = trovochat::connect_easy_tls(&nick, &pass).await.unwrap();
+    // split the stream | TODO decide on R+W or R,W
+    let (read, write) = tokio::io::split(stream);
 
     let client = Client::new();
 
