@@ -16,7 +16,8 @@ async fn main() {
     );
 
     // give dispatcher to the client, also defaulting the abort signal
-    let (runner, mut control) = trovochat::Runner::new(dispatcher.clone());
+    let (runner, mut control) =
+        trovochat::Runner::new(dispatcher.clone(), trovochat::RateLimit::default());
 
     let stream = trovochat::connect_easy_tls(&nick, &pass).await.unwrap();
 

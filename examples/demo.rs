@@ -45,7 +45,8 @@ async fn main() {
 
     // make a new runner
     // control allows you to stop the runner, and gives you access to an async. encoder (writer)
-    let (runner, mut control) = trovochat::Runner::new(dispatcher.clone());
+    let (runner, mut control) =
+        trovochat::Runner::new(dispatcher.clone(), trovochat::RateLimit::default());
 
     // connect via TCP with TLS with this nick and password
     let stream = trovochat::connect_easy_tls(&nick, &pass).await.unwrap();

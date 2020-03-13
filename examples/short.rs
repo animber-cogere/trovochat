@@ -23,7 +23,7 @@ async fn main() {
         }
     });
 
-    let (runner, mut control) = Runner::new(dispatcher.clone());
+    let (runner, mut control) = Runner::new(dispatcher.clone(), trovochat::RateLimit::default());
 
     let (nick, pass) = trovochat::ANONYMOUS_LOGIN;
     let stream = trovochat::connect_easy_tls(&nick, &pass).await.unwrap();
