@@ -16,7 +16,8 @@ async fn main() {
     );
 
     // give dispatcher to the client, also defaulting the abort signal
-    let (runner, mut control) = trovochat::Runner::new(dispatcher.clone());
+    let (runner, mut control) =
+        trovochat::Runner::new(dispatcher.clone(), trovochat::RateLimit::default());
 
     let stream = trovochat::connect_easy_tls(&nick, &pass).await.unwrap();
 
@@ -28,7 +29,7 @@ async fn main() {
     // GlobalUserState can also be used to 'wait' for ready
     // 'block' until we've received an IrcReady event
     let _ready = dispatcher
-        .one_time::<trovochat::events::IrcReady>()
+        .wait_for::<trovochat::events::IrcReady>()
         .await
         .unwrap();
 
