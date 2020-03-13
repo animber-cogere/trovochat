@@ -1,6 +1,5 @@
 use tokio::stream::StreamExt as _;
-use trovochat::runner::Writer;
-use trovochat::{events, messages, Control, Dispatcher, IntoChannel, Runner, Status};
+use trovochat::{events, messages, Control, Dispatcher, IntoChannel, Runner, Status, Writer};
 
 fn get_creds() -> (String, String, String) {
     fn get_it(name: &str) -> String {

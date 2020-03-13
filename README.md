@@ -346,8 +346,7 @@ let cursor: Cursor<Vec<u8>> = encoder.into_inner();
 ## Putting it together, a simple "bot"
 ```rust no_run
 use tokio::stream::StreamExt as _;
-use trovochat::runner::Writer;
-use trovochat::{events, messages, Control, Dispatcher, IntoChannel, Runner, Status, RateLimit};
+use trovochat::{events, messages, Control, Dispatcher, IntoChannel, Runner, Status, RateLimit, Writer};
 
 fn get_creds() -> (String, String, String) {
     fn get_it(name: &str) -> String {
