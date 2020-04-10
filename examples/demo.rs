@@ -125,6 +125,9 @@ async fn main() {
         Ok(trovochat::Status::Canceled) => {
             eprintln!("client was stopped by user");
         }
+        Ok(trovochat::Status::Timeout) => {
+            eprintln!("client's connection timed out");
+        }
         Err(err) => {
             eprintln!("error: {}", err);
         }
