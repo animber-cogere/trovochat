@@ -26,7 +26,9 @@ async fn main() {
     let (runner, mut control) = Runner::new(dispatcher.clone(), trovochat::RateLimit::default());
 
     let (nick, pass) = trovochat::ANONYMOUS_LOGIN;
-    let stream = trovochat::connect_easy_tls(&nick, &pass).await.unwrap();
+    let stream = trovochat::native_tls::connect_easy(&nick, &pass)
+        .await
+        .unwrap();
 
     // run to completion in the background
     let done = tokio::task::spawn(runner.run(stream));
