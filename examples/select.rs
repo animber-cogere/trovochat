@@ -18,7 +18,9 @@ async fn main() {
     let fut = run_loop(control.clone(), dispatcher, channels);
 
     let (nick, pass) = trovochat::ANONYMOUS_LOGIN;
-    let conn = trovochat::connect_easy_tls(nick, pass).await.unwrap();
+    let conn = trovochat::native_tls::connect_easy(nick, pass)
+        .await
+        .unwrap();
 
     tokio::select! {
         _ = fut => { control.stop() }
