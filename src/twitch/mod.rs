@@ -1,3 +1,5 @@
+//! Common Trovo types
+
 mod capability;
 pub use capability::Capability;
 
