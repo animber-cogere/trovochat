@@ -54,14 +54,18 @@ Write the provided `name` and `token` to the ***sync*** writer
 ```rust
 # use trovochat::sync::*;
 
-let (name, token) = ("hunter2", "hunter2");
+let (name, token) = ("justinfan1234", "justinfan1234");
 
 let mut writer = vec![];
 register_easy(&name, &token, &mut writer).unwrap();
 
 assert_eq!(
     std::str::from_utf8(&writer).unwrap(),
-    "PASS hunter2\r\nNICK hunter2\r\n"
+    "CAP REQ :trovo.tv/membership\r\n\
+    CAP REQ :trovo.tv/tags\r\n\
+    CAP REQ :trovo.tv/commands\r\n\
+    PASS justinfan1234\r\n\
+    NICK justinfan1234\r\n"
 );
 ```
 */
