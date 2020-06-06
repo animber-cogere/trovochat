@@ -1,7 +1,7 @@
 /* in your Cargo.toml
 [dependencies]
 # this crate
-trovochat = "0.10"
+trovochat = "0.11"
 
 # and now for tokio
 # macros allows you to use `#[tokio::main]` and `tokio::pin!` and `tokio::select!`
