@@ -53,10 +53,9 @@
 
 // pub use encode::{AsyncMpscWriter, AsyncWriter as Writer};
 
-// pub mod trovo;
-
+pub mod trovo;
 // #[doc(inline)]
-// pub use trovo::*;
+pub use trovo::*;
 
 // pub mod events;
 
@@ -134,4 +133,4 @@
 // pub mod native_tls;
 
 // TODO WIP
-mod ng;
+pub mod ng;
