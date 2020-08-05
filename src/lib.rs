@@ -59,8 +59,6 @@ pub use trovo::*;
 
 // pub mod events;
 
-// pub mod messages;
-
 // pub mod sync;
 
 // mod parse;
