@@ -52,6 +52,7 @@ mod validator;
 pub use validator::Validator;
 
 pub mod trovo;
+#[doc(hidden)]
 pub use trovo::*;
 
 use trovo::color::Color;
