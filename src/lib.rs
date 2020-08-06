@@ -51,6 +51,8 @@ use validator::Validator;
 pub mod trovo;
 pub use trovo::*;
 
+pub use trovo::color::{Color, TrovoColor, RGB};
+
 pub mod rate_limit;
 
 #[cfg(feature = "serde")]
