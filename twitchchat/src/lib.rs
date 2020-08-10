@@ -76,6 +76,9 @@ pub const TROVO_WS_ADDRESS: &str = "ws://irc-ws.chat.trovo.tv:80";
 /// The Trovo WebSocket address for TLS connections
 pub const TROVO_WS_ADDRESS_TLS: &str = "wss://irc-ws.chat.trovo.tv:443";
 
+/// A TLS domain for Trovo
+pub const TROVO_TLS_DOMAIN: &str = "irc.chat.trovo.tv";
+
 /// An anonymous login.
 pub const ANONYMOUS_LOGIN: (&str, &str) = (JUSTINFAN1234, JUSTINFAN1234);
 pub(crate) const JUSTINFAN1234: &str = "justinfan1234";
@@ -90,3 +93,9 @@ mod util;
 
 pub mod channel;
 pub use channel::{Receiver, Sender};
+
+/// Asynchronous connectors for various runtimes.
+pub mod connector;
+
+/// A boxed `Future` that is `Send + Sync`
+pub type BoxedFuture<T> = std::pin::Pin<Box<dyn std::future::Future<Output = T> + Send + Sync>>;
