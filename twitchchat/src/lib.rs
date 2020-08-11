@@ -31,6 +31,28 @@
 // #[cfg(all(doctest, feature = "async", feature = "tokio_native_tls"))]
 // doc_comment::doctest!("../README.md");
 
+/// A boxed `Future` that is `Send + Sync`
+pub type BoxedFuture<T> = std::pin::Pin<Box<dyn std::future::Future<Output = T> + Send + Sync>>;
+
+/// The Trovo IRC address for non-TLS connections
+pub const TROVO_IRC_ADDRESS: &str = "irc.chat.trovo.tv:6667";
+
+/// The Trovo IRC address for TLS connections
+pub const TROVO_IRC_ADDRESS_TLS: &str = "irc.chat.trovo.tv:6697";
+
+/// The Trovo WebSocket address for non-TLS connections
+pub const TROVO_WS_ADDRESS: &str = "ws://irc-ws.chat.trovo.tv:80";
+
+/// The Trovo WebSocket address for TLS connections
+pub const TROVO_WS_ADDRESS_TLS: &str = "wss://irc-ws.chat.trovo.tv:443";
+
+/// A TLS domain for Trovo
+pub const TROVO_TLS_DOMAIN: &str = "irc.chat.trovo.tv";
+
+/// An anonymous login.
+pub const ANONYMOUS_LOGIN: (&str, &str) = (JUSTINFAN1234, JUSTINFAN1234);
+pub(crate) const JUSTINFAN1234: &str = "justinfan1234";
+
 #[macro_use]
 mod maybe_owned;
 pub use maybe_owned::{IntoOwned, MaybeOwned as Str, MaybeOwnedIndex as StrIndex};
@@ -71,11 +93,9 @@ mod serde;
 
 pub mod runner;
 #[doc(inline)]
-pub use runner::Error as RunnerError;
+pub use runner::{AsyncRunner, Error as RunnerError};
 
 pub mod writer;
-
-mod util;
 
 pub mod channel;
 #[doc(inline)]
@@ -84,27 +104,8 @@ pub use channel::{Receiver, Sender};
 /// Asynchronous connectors for various runtimes.
 pub mod connector;
 
-/// A boxed `Future` that is `Send + Sync`
-pub type BoxedFuture<T> = std::pin::Pin<Box<dyn std::future::Future<Output = T> + Send + Sync>>;
-
-/// The Trovo IRC address for non-TLS connections
-pub const TROVO_IRC_ADDRESS: &str = "irc.chat.trovo.tv:6667";
-
-/// The Trovo IRC address for TLS connections
-pub const TROVO_IRC_ADDRESS_TLS: &str = "irc.chat.trovo.tv:6697";
-
-/// The Trovo WebSocket address for non-TLS connections
-pub const TROVO_WS_ADDRESS: &str = "ws://irc-ws.chat.trovo.tv:80";
-
-/// The Trovo WebSocket address for TLS connections
-pub const TROVO_WS_ADDRESS_TLS: &str = "wss://irc-ws.chat.trovo.tv:443";
-
-/// A TLS domain for Trovo
-pub const TROVO_TLS_DOMAIN: &str = "irc.chat.trovo.tv";
-
-/// An anonymous login.
-pub const ANONYMOUS_LOGIN: (&str, &str) = (JUSTINFAN1234, JUSTINFAN1234);
-pub(crate) const JUSTINFAN1234: &str = "justinfan1234";
-
 // a public dep
 pub use simple_event_map::{EventMap, EventStream};
+
+// our internal stuff that should never be exposed
+mod util;
