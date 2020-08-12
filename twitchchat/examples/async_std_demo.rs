@@ -1,9 +1,7 @@
 // NOTE: this demo requires `--features "async-std async-std/attributes"`.
-// NOTE: the async_std/attributes features is for the `async::main` macro, you
-// don't have to use it in your code
+// NOTE: the "async_std/attributes" feature is for the `async::main` macro, you don't have to use it in your code
 
-// futures_lite or futures would work. you'd just need the StreamExt trait to
-// iterate over EventStream
+// `futures_lite` or `futures` would work. you'd just need the `StreamExt` trait to iterate over `EventStream`
 use futures_lite::*;
 
 use trovochat::{commands, connector, messages, rate_limit::NullBlocker, runner::Status};
@@ -16,7 +14,7 @@ fn get_user_config() -> trovochat::UserConfig {
     let name = expect_env_var("TROVO_NAME");
     let token = expect_env_var("TROVO_TOKEN");
 
-    // you need a UserConfig to connect to Trovo
+    // you need a `UserConfig` to connect to Trovo
     trovochat::UserConfig::builder()
         // the name of the associated trovo account
         .name(name)
@@ -53,11 +51,8 @@ async fn main() {
     // and the raw irc message
     let mut all = dispatcher.subscribe::<messages::IrcMessage>().await;
 
-    // 'subscribe' returns a stream, so we'll spawn a task and loop over it
-    // until its done producing messages.
-
-    // the event stream will 'close' when you the main loop exists or call
-    // reset() on the dispatcher
+    // 'subscribe' returns a stream, so we'll spawn a task and loop over it until its done producing messages.
+    // the event stream will 'close' when you the main loop exists or call reset() on the dispatcher
     async_std::task::spawn(async move {
         while let Some(_msg) = all.next().await {
             // do something with msg. we'll ignore it so the output isn't
@@ -74,8 +69,7 @@ async fn main() {
 
     // create a new runner. this is a provided async 'main loop'
     let mut runner = trovochat::AsyncRunner::new(dispatcher, user_config, connector);
-    // which'll let you get a writer out. this'll let you pass in a rate
-    // limiter and a blocking strategy.
+    // which'll let you get a writer out. this'll let you pass in a rate limiter and a blocking strategy.
     let mut writer = runner.writer(None, NullBlocker::default());
 
     async_std::task::spawn({
