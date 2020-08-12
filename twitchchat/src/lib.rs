@@ -3,31 +3,31 @@
     clippy::redundant_pub_crate,
     clippy::use_self
 )]
-// #![warn(
-//     missing_docs,
-//     missing_debug_implementations,
-//     missing_copy_implementations,
-//     trivial_casts,
-//     trivial_numeric_casts,
-//     unsafe_code,
-//     unstable_features,
-//     unused_import_braces,
-//     unused_qualifications
-// )]
-// #![cfg_attr(docsrs, feature(doc_cfg))]
-// /*!
-// This crate provides a way to interface with [Trovo]'s chat.
+#![warn(
+    missing_docs,
+    missing_debug_implementations,
+    missing_copy_implementations,
+    trivial_casts,
+    trivial_numeric_casts,
+    unsafe_code,
+    unstable_features,
+    unused_import_braces,
+    unused_qualifications
+)]
+#![cfg_attr(docsrs, feature(doc_cfg))]
+/*!
+This crate provides a way to interface with [Trovo]'s chat.
 
-// Along with the messages as Rust types, it provides methods for sending messages.
+Along with the messages as Rust types, it provides methods for sending messages.
 
-// # Demonstration
-// See `examples/demo.rs` for a demo of the api
+# Demonstration
+See `examples/demo.rs` for a demo of the api
 
-// ---
-// Here's a quick link to the [Event Mapping](./struct.Dispatcher.html#a-table-of-mappings)
+---
+Here's a quick link to the [Event Mapping](./struct.Dispatcher.html#a-table-of-mappings)
 
-// [Trovo]: https://www.trovo.tv
-// */
+[Trovo]: https://www.trovo.tv
+*/
 // #[cfg(all(doctest, feature = "async", feature = "tokio_native_tls"))]
 // doc_comment::doctest!("../README.md");
 
