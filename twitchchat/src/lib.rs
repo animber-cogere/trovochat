@@ -80,9 +80,7 @@ pub use trovo::*;
 
 use trovo::color::Color;
 
-pub mod rate_limit;
-#[doc(inline)]
-pub use rate_limit::RateLimit;
+mod rate_limit;
 
 #[cfg(feature = "serde")]
 mod serde;
