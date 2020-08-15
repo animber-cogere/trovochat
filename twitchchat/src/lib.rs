@@ -81,6 +81,8 @@ pub use trovo::*;
 use trovo::color::Color;
 
 mod rate_limit;
+#[doc(inline)]
+pub use rate_limit::RateClass;
 
 #[cfg(feature = "serde")]
 mod serde;
