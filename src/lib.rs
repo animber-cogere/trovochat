@@ -71,8 +71,8 @@ pub use irc::FromIrcMessage;
 mod validator;
 pub use validator::Validator;
 
-pub mod trovo;
-#[doc(hidden)]
+mod trovo;
+#[doc(inline)]
 pub use trovo::*;
 
 use trovo::color::Color;
