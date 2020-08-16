@@ -61,7 +61,6 @@ mod tests {
             "CAP REQ :trovo.tv/membership\r\n\
             CAP REQ :trovo.tv/tags\r\n\
             CAP REQ :trovo.tv/commands\r\n\
-            CAP REQ :trovo.tv/tags trovo.tv/commands\r\n\
             PASS justinfan1234\r\n\
             NICK justinfan1234\r\n",
         )
@@ -81,7 +80,6 @@ mod tests {
             "CAP REQ :trovo.tv/membership\r\n\
             CAP REQ :trovo.tv/tags\r\n\
             CAP REQ :trovo.tv/commands\r\n\
-            CAP REQ :trovo.tv/tags trovo.tv/commands\r\n\
             PASS justinfan1234\r\n\
             NICK justinfan1234\r\n",
         )
