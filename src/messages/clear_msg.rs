@@ -88,6 +88,7 @@ mod tests {
     fn clear_msg_serde() {
         let input = ":tmi.trovo.tv CLEARMSG #museun :HeyGuys\r\n";
         crate::serde::round_trip_json::<ClearMsg>(input);
+        crate::serde::round_trip_rmp::<ClearMsg>(input);
     }
 
     #[test]

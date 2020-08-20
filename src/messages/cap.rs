@@ -78,6 +78,7 @@ mod tests {
     fn cap_serde() {
         let input = ":tmi.trovo.tv CAP * ACK :trovo.tv/membership\r\n";
         crate::serde::round_trip_json::<Cap>(input);
+        crate::serde::round_trip_rmp::<Cap>(input);
     }
 
     #[test]
