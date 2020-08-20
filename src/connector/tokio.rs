@@ -81,7 +81,7 @@ mod native_tls {
     impl ConnectorNativeTls {
         /// Create a new `tokio` TLS connector.
         pub fn trovo() -> Self {
-            Self::custom(crate::TROVO_IRC_ADDRESS, crate::TROVO_TLS_DOMAIN)
+            Self::custom(crate::TROVO_IRC_ADDRESS_TLS, crate::TROVO_TLS_DOMAIN)
                 .expect("trovo DNS resolution")
         }
 
@@ -174,7 +174,7 @@ mod rustls {
     impl ConnectorRustTls {
         /// Create a new `tokio` TLS connector.
         pub fn trovo() -> Self {
-            Self::custom(crate::TROVO_IRC_ADDRESS, crate::TROVO_TLS_DOMAIN)
+            Self::custom(crate::TROVO_IRC_ADDRESS_TLS, crate::TROVO_TLS_DOMAIN)
                 .expect("trovo DNS resolution")
         }
 
