@@ -50,7 +50,7 @@ mod tls {
     impl ConnectorTls {
         /// Create a new `async_io` TLS connector.
         pub fn trovo() -> Self {
-            Self::custom(crate::TROVO_IRC_ADDRESS, crate::TROVO_TLS_DOMAIN)
+            Self::custom(crate::TROVO_IRC_ADDRESS_TLS, crate::TROVO_TLS_DOMAIN)
                 .expect("trovo DNS resolution")
         }
 
