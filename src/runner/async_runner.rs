@@ -5,11 +5,11 @@ use crate::{
     decoder::{AsyncDecoder, DecodeError},
     encoder::{AsyncEncoder, Encodable},
     messages::{Capability, Commands, Join, MessageId, Part},
-    rate_limit::RateLimit,
+    rate_limit::{RateClass, RateLimit},
     trovo::UserConfig,
     util::{Either, Notify, NotifyHandle},
     writer::{AsyncWriter, MpscWriter},
-    FromIrcMessage, RateClass,
+    FromIrcMessage,
 };
 
 use super::{
