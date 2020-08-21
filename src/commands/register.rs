@@ -1,4 +1,6 @@
-use crate::{Encodable, UserConfig};
+use super::Encodable;
+use crate::trovo::UserConfig;
+
 use std::io::Write;
 
 /// Registers with Trovo. This writes the `UserConfig` out
