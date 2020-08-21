@@ -1,4 +1,4 @@
-use crate::{color::Color, runner::Capabilities};
+use crate::{runner::Capabilities, trovo::Color};
 
 /// Your identity on Trovo.
 ///

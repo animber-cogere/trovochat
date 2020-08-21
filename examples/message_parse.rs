@@ -33,10 +33,10 @@ fn parse_demo() {
         assert_eq!(pm.channel(), "#museun");
 
         // you can consume the parsed message to get the raw string back out.
-        // this gives you a Str<'a> because the type can be converted to an owned state (e.g. static);
-        let msg: trovochat::Str<'_> = pm.into_inner();
+        // this gives you a MaybeOwned<'a> because the type can be converted to an owned state (e.g. static);
+        let msg: trovochat::maybe_owned::MaybeOwned<'_> = pm.into_inner();
 
-        // `Str<'a>` can be used as a `&'a str`.
+        // `MaybeOwned<'a>` can be used as a `&'a str`.
         let msg = trovochat::irc::parse(&*msg)
             .next()
             .map(|s| s.unwrap())
