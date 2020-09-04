@@ -10,7 +10,7 @@ It contains your user name, your OAuth token and the capabilities you want to re
 
 # example using a builder
 ```
-# use trovochat_sync::trovo::{Capability, UserConfig};
+# use trovochat::trovo::{Capability, UserConfig};
 # std::env::set_var("TROVO_NAME", "foo");
 # std::env::set_var("TROVO_TOKEN", format!("oauth:{}", "a".repeat(30)));
 // as anonymous

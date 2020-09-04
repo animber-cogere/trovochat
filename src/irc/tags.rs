@@ -54,7 +54,7 @@ impl<'a> Tags<'a> {
     [FromStr]: https://doc.rust-lang.org/std/str/trait.FromStr.html
 
     ```rust
-    # use trovochat_sync::{irc::{TagIndices, Tags}, maybe_owned::MaybeOwned};
+    # use trovochat::{irc::{TagIndices, Tags}, maybe_owned::MaybeOwned};
     let input: MaybeOwned<'_> = "@foo=42;color=#1E90FF".into();
     let indices = TagIndices::build_indices(&*input);
     let tags = Tags::from_data_indices(&input, &indices);
@@ -73,7 +73,7 @@ impl<'a> Tags<'a> {
     assert!(tags.get_parsed::<_, bool>("foo").is_none());
 
     // a non-std type with a FromStr impl
-    # use trovochat_sync::trovo::color::*;
+    # use trovochat::trovo::color::*;
     let color: Color = tags.get_parsed("color").unwrap();
     assert_eq!(color.rgb, RGB(0x1E, 0x90, 0xFF));
     ```
@@ -95,8 +95,8 @@ impl<'a> Tags<'a> {
     If it wasn't found it'll return false
 
     ```rust
-    # use trovochat_sync::irc::{TagIndices, Tags};
-    # use trovochat_sync::maybe_owned::MaybeOwned;
+    # use trovochat::irc::{TagIndices, Tags};
+    # use trovochat::maybe_owned::MaybeOwned;
     let input: MaybeOwned<'_> = "@foo=42;ok=true;nope=false;test=1;not_test=0".into();
     let indices = TagIndices::build_indices(&*input);
     let tags = Tags::from_data_indices(&input, &indices);
