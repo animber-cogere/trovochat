@@ -12,13 +12,13 @@
 //! With the parsed type, you can further refine it into specific Trovo-oriented messages.
 //!
 //! ```
-//! use trovochat::{IrcMessage, MessageError};
+//! use trovochat_sync::{IrcMessage, MessageError};
 //! // a raw message from the server
 //! let input = "@key1=val;key2=true :user!user@user PRIVMSG #some_channel :\x01ACTION hello world\x01\r\n";
 //!
 //! type MsgResult<'a> = Result<IrcMessage<'a>, MessageError>;
 //! // this'll return an iterator over any messages in the `input` string.
-//! let mut messages: Vec<MsgResult<'_>> = trovochat::irc::parse(input).collect();
+//! let mut messages: Vec<MsgResult<'_>> = trovochat_sync::irc::parse(input).collect();
 //! // we should have only gotten 1 message
 //! assert_eq!(messages.len(), 1);
 //! // and unwrap whether it was an invalid message or not

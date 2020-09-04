@@ -5,11 +5,11 @@
 //!
 //! ```
 //! let input = ":user!user@user PRIVMSG #test_channel :this is some data\r\n";
-//! let irc_msg = trovochat::irc::parse(input).next().unwrap().unwrap();
+//! let irc_msg = trovochat_sync::irc::parse(input).next().unwrap().unwrap();
 //!
 //! // this is implemented for all of the tyupes in this module
-//! use trovochat::FromIrcMessage;
-//! use trovochat::messages::Privmsg;
+//! use trovochat_sync::FromIrcMessage;
+//! use trovochat_sync::messages::Privmsg;
 //! // this will produce an error if its not this type of message
 //! let pm = Privmsg::from_irc(irc_msg).unwrap();
 //! assert_eq!(pm.data(), "this is some data");
@@ -19,11 +19,11 @@
 //!
 //! ```
 //! let input = ":user!user@user PRIVMSG #test_channel :this is some data\r\n";
-//! let irc_msg = trovochat::irc::parse(input).next().unwrap().unwrap();
+//! let irc_msg = trovochat_sync::irc::parse(input).next().unwrap().unwrap();
 //!
 //! // this is implemented for all of the tyupes in this module
-//! use trovochat::FromIrcMessage;
-//! use trovochat::messages::Commands;
+//! use trovochat_sync::FromIrcMessage;
+//! use trovochat_sync::messages::Commands;
 //!
 //! let all = Commands::from_irc(irc_msg).unwrap();
 //! assert!(matches!(all, Commands::Privmsg{..}));
