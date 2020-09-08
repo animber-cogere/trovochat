@@ -7,7 +7,7 @@
 //! let input = ":user!user@user PRIVMSG #test_channel :this is some data\r\n";
 //! let irc_msg = trovochat::irc::parse(input).next().unwrap().unwrap();
 //!
-//! // this is implemented for all of the tyupes in this module
+//! // this is implemented for all of the types in this module
 //! use trovochat::FromIrcMessage;
 //! use trovochat::messages::Privmsg;
 //! // this will produce an error if its not this type of message
