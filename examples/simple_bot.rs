@@ -1,8 +1,10 @@
 // note this uses `smol`. you can use `tokio` or `async_std` or `async_io` if you prefer.
+mod include;
 use anyhow::Context as _;
 use std::collections::HashMap;
 
 // extensions to the Privmsg type
+use crate::include::{channels_to_join, get_user_config};
 use trovochat::PrivmsgExt as _;
 use trovochat::{
     messages::{Commands, Privmsg},
@@ -140,35 +142,4 @@ impl Bot {
         }
         input.splitn(2, ' ').next()
     }
-}
-
-// some helpers for the demo
-fn get_env_var(key: &str) -> anyhow::Result<String> {
-    std::env::var(key).with_context(|| format!("please set `{}`", key))
-}
-
-// channels can be either in the form of '#museun' or 'museun'. the crate will internally add the missing #
-fn channels_to_join() -> anyhow::Result<Vec<String>> {
-    let channels = get_env_var("TROVO_CHANNEL")?
-        .split(',')
-        .map(ToString::to_string)
-        .collect();
-    Ok(channels)
-}
-
-fn get_user_config() -> anyhow::Result<trovochat::UserConfig> {
-    let name = get_env_var("TROVO_NAME")?;
-    let token = get_env_var("TROVO_TOKEN")?;
-
-    // you need a `UserConfig` to connect to Trovo
-    let config = UserConfig::builder()
-        // the name of the associated trovo account
-        .name(name)
-        // and the provided OAuth token
-        .token(token)
-        // and enable all of the advanced message signaling from Trovo
-        .enable_all_capabilities()
-        .build()?;
-
-    Ok(config)
 }
