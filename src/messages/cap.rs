@@ -90,7 +90,7 @@ mod tests {
             "trovo.tv/tags",
             "trovo.tv/commands",
         ];
-        for (msg, expected) in parse(&input).map(|s| s.unwrap()).zip(expected) {
+        for (msg, expected) in parse(input).map(|s| s.unwrap()).zip(expected) {
             let msg = Cap::from_irc(msg).unwrap();
             assert_eq!(msg.capability(), Capability::Acknowledged(*expected));
         }
