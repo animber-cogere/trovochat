@@ -12,7 +12,7 @@ use crate::include::{channels_to_join, get_user_config, main_loop};
 async fn connect(user_config: &UserConfig, channels: &[String]) -> anyhow::Result<AsyncRunner> {
     // create a connector using ``tokio``, this connects to Trovo.
     // you can provide a different address with `custom`
-    let connector = connector::tokio::Connector::trovo();
+    let connector = connector::tokio::Connector::trovo()?;
 
     println!("we're connecting!");
     // create a new runner. this is a provided async 'main loop'
