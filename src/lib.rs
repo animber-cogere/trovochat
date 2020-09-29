@@ -40,7 +40,7 @@ To use the [AsyncRunner] (an async-event loop) and related helpers, you must abl
 ***NOTE*** This is a breaking change from `0.12` which had the async stuff enabled by default.
 
 ```toml
-trovochat = { version = "0.13", features = ["async"] }
+trovochat = { version = "0.14", features = ["async"] }
 ```
 ---
 
