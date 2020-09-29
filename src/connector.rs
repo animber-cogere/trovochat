@@ -56,9 +56,8 @@ macro_rules! connector_ctor {
         #[doc = "Create a new"]
         $(#[$meta])*
         #[doc = "TLS connector that connects to the ***default Trovo*** address."]
-        pub fn trovo() -> Self {
+        pub fn trovo() -> ::std::io::Result<Self> {
             Self::custom($crate::TROVO_IRC_ADDRESS_TLS, $crate::TROVO_TLS_DOMAIN)
-                .expect("trovo DNS resolution")
         }
 
 
