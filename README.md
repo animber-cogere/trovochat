@@ -2,7 +2,6 @@
 
 [![Documentation][docs_badge]][docs]
 [![Crates][crates_badge]][crates]
-[![Actions][actions_badge]][actions]
 
 This crate provides a way to interact with [Trovo]'s chat.
 
